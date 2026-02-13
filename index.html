@@ -9,10 +9,10 @@
 body {
     margin: 0;
     overflow: hidden;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background: linear-gradient(45deg, #ff6a88, #ff99ac);
+    font-family: 'Georgia', serif;
+    background: radial-gradient(circle at top, #1e1e2f, #0f0f1a);
     color: white;
+    text-align: center;
     height: 100vh;
 }
 
@@ -20,33 +20,56 @@ body {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    padding: 20px;
 }
 
-h1 { font-size: 2.5rem; }
-p { max-width: 350px; margin: auto; font-size: 1.1rem; }
+h1 {
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+    animation: fadeIn 3s ease;
+}
+
+p {
+    max-width: 500px;
+    margin: 20px auto;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    animation: fadeIn 4s ease;
+}
 
 button {
-    margin: 8px;
-    padding: 10px 20px;
+    margin-top: 20px;
+    padding: 12px 28px;
     border: none;
-    border-radius: 25px;
+    border-radius: 30px;
+    font-size: 1rem;
     cursor: pointer;
-    font-weight: bold;
+    background: crimson;
+    color: white;
+    transition: 0.4s;
 }
 
-.yes { background: white; color: #ff4e50; }
-.no { background: black; color: white; position: absolute; }
-.fun { background: gold; color: black; }
-.secret { background: purple; color: white; }
+button:hover {
+    background: #ff4d6d;
+    transform: scale(1.05);
+}
 
-.heart {
+.star {
     position: absolute;
-    animation: float 6s linear infinite;
+    width: 2px;
+    height: 2px;
+    background: white;
+    animation: twinkle 2s infinite alternate;
 }
 
-@keyframes float {
-    0% { transform: translateY(100vh); opacity: 1; }
-    100% { transform: translateY(-10vh); opacity: 0; }
+@keyframes twinkle {
+    from { opacity: 0.2; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .firework {
@@ -67,80 +90,65 @@ button {
 <div class="container">
 <h1>Mahnoor ❤️</h1>
 
-<p id="poetry">
-Tum meri life ki WiFi ho,  
-Signal full ho toh duniya colorful ho 😌💘  
-Tum meri chai ka sukoon ho,  
-Aur meri har smile ka reason ho ❤️
+<p id="text">
+"Khudi ko kar buland itna..." <br>
+— Allama Iqbal <br><br>
+
+But today, my only elevation is loving you more.  
+Tum meri raat ka chaand ho,  
+meri dua ka sabse khoobsurat hissa. 🌙  
+
+Faiz ne kaha tha,  
+"Gulon mein rang bhare..."  
+Magar meri duniya mein rang tab aaya  
+jab tum meri zindagi mein aayi. 💖  
+
+Mahnoor,  
+tum sirf ek naam nahi…  
+tum meri sukoon ho.
 </p>
 
-<br>
-
-<button class="yes" onclick="love()">Yes Obviously 😌</button>
-<button class="no" id="noBtn" onmouseover="moveNo()">No 😏</button>
-<button class="fun" onclick="funny()">Make Me Laugh 😂</button>
-<button class="secret" onclick="secret()">Secret Surprise 🎁</button>
+<button onclick="reveal()">Forever Yours ❤️</button>
 
 </div>
 
 <script>
 
-// Running NO button
-function moveNo(){
-  const btn = document.getElementById("noBtn");
-  btn.style.left = Math.random()*80 + "%";
-  btn.style.top = Math.random()*80 + "%";
+// Star background
+for(let i=0;i<100;i++){
+    const star=document.createElement("div");
+    star.className="star";
+    star.style.left=Math.random()*100+"vw";
+    star.style.top=Math.random()*100+"vh";
+    star.style.animationDuration=(Math.random()*2+1)+"s";
+    document.body.appendChild(star);
 }
 
-// Floating hearts
-function heart(){
-  const h = document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-}
-setInterval(heart,300);
-
-// YES button
-function love(){
-  document.getElementById("poetry").innerHTML =
-  "Mahnoor, tum meri dua ho 🤍<br><br> \
-   Jab tum hasta ho, meri duniya roshan ho jaati hai ✨<br> \
-   I promise tumhe hamesha tang karunga... par sirf pyaar se 😌💖";
-  fireworks();
+// Reveal message
+function reveal(){
+    document.getElementById("text").innerHTML=
+    "Happy Valentine's Day, Mahnoor ❤️<br><br>\
+    Tum meri zindagi ka sabse khoobsurat hissa ho.<br>\
+    Jab tum muskuraati ho, duniya thodi aur roshan lagti hai.<br><br>\
+    Main wada karta hoon — hamesha tumhara rahunga.<br>\
+    Not just today, but forever. 💍✨";
+    fireworks();
 }
 
-// Funny button
-function funny(){
-  alert("Tum itni cute ho ke Google bhi tumhe search nahi kar sakta, kyunki tum one of a kind ho 😌❤️");
-}
-
-// Secret button
-function secret(){
-  document.getElementById("poetry").innerHTML =
-  "Secret unlocked 🔐💘<br><br> \
-   Sach bataun? <br> \
-   Main lucky hoon ke tum meri ho. <br> \
-   Tum sirf meri girlfriend nahi... meri best friend bhi ho ❤️";
-}
-
-// Fireworks effect
+// Fireworks
 function fireworks(){
-  for(let i=0;i<15;i++){
-    const f=document.createElement("div");
-    f.className="firework";
-    f.innerHTML="💖";
-    f.style.left=Math.random()*100+"vw";
-    f.style.top=Math.random()*100+"vh";
-    document.body.appendChild(f);
-    setTimeout(()=>f.remove(),1000);
-  }
+    for(let i=0;i<20;i++){
+        const f=document.createElement("div");
+        f.className="firework";
+        f.innerHTML="💖";
+        f.style.left=Math.random()*100+"vw";
+        f.style.top=Math.random()*100+"vh";
+        document.body.appendChild(f);
+        setTimeout(()=>f.remove(),1000);
+    }
 }
 
 </script>
 
 </body>
 </html>
-
