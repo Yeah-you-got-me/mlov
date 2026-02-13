@@ -3,148 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Mahnoor ❤️</title>
+<title>Mahnoor ❤️</title>
 
 <style>
 body {
     margin: 0;
-    height: 100vh;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     font-family: Arial, sans-serif;
-    background: linear-gradient(-45deg, #ff6a88, #ff99ac, #ff758c, #ff7eb3);
-    background-size: 400% 400%;
-    animation: gradientBG 8s ease infinite;
-    color: white;
     text-align: center;
+    background: linear-gradient(45deg, #ff6a88, #ff99ac);
+    color: white;
+    height: 100vh;
 }
 
-@keyframes gradientBG {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+.container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-h1 {
-    font-size: 2.7rem;
-    animation: fadeIn 2s ease;
-}
-
-p {
-    font-size: 1.2rem;
-    max-width: 350px;
-    animation: fadeIn 3s ease;
-}
+h1 { font-size: 2.5rem; }
+p { max-width: 350px; margin: auto; font-size: 1.1rem; }
 
 button {
-    padding: 12px 25px;
-    margin: 10px;
+    margin: 8px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 30px;
-    font-size: 1rem;
+    border-radius: 25px;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-#yesBtn {
-    background: white;
-    color: #ff4e50;
     font-weight: bold;
 }
 
-#yesBtn:hover {
-    transform: scale(1.1);
-}
+.yes { background: white; color: #ff4e50; }
+.no { background: black; color: white; position: absolute; }
+.fun { background: gold; color: black; }
+.secret { background: purple; color: white; }
 
-#noBtn {
-    background: black;
-    color: white;
-    position: absolute;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
-}
-
-/* Floating hearts */
 .heart {
     position: absolute;
-    color: rgba(255,255,255,0.7);
-    font-size: 20px;
-    animation: floatUp 6s linear infinite;
+    animation: float 6s linear infinite;
 }
 
-@keyframes floatUp {
-    0% {transform: translateY(100vh); opacity: 1;}
-    100% {transform: translateY(-10vh); opacity: 0;}
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+.firework {
+    position: absolute;
+    font-size: 30px;
+    animation: boom 1s ease forwards;
+}
+
+@keyframes boom {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(3); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
+<div class="container">
 <h1>Mahnoor ❤️</h1>
 
-<p>
-From the day you came into my life,  
-everything became brighter.  
-You are my peace, my happiness, my favorite notification 📱💘  
-Will you be my Valentine forever?
+<p id="poetry">
+Tum meri life ki WiFi ho,  
+Signal full ho toh duniya colorful ho 😌💘  
+Tum meri chai ka sukoon ho,  
+Aur meri har smile ka reason ho ❤️
 </p>
 
-<button id="yesBtn" onclick="yesLove()">Yes Obviously 😌💖</button>
-<button id="noBtn" onmouseover="moveButton()">No 😏</button>
+<br>
 
-<audio autoplay loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
-</audio>
+<button class="yes" onclick="love()">Yes Obviously 😌</button>
+<button class="no" id="noBtn" onmouseover="moveNo()">No 😏</button>
+<button class="fun" onclick="funny()">Make Me Laugh 😂</button>
+<button class="secret" onclick="secret()">Secret Surprise 🎁</button>
+
+</div>
 
 <script>
 
 // Running NO button
-function moveButton() {
-    const btn = document.getElementById("noBtn");
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    btn.style.left = x + "px";
-    btn.style.top = y + "px";
+function moveNo(){
+  const btn = document.getElementById("noBtn");
+  btn.style.left = Math.random()*80 + "%";
+  btn.style.top = Math.random()*80 + "%";
 }
 
-// YES click action
-function yesLove() {
-    document.body.innerHTML = `
-        <h1>I Love You Mahnoor ❤️</h1>
-        <p>
-        You are the best part of my life.  
-        My forever person.  
-        My always and only Valentine 💞  
-        Thank you for being mine.
-        </p>
-    `;
+// Floating hearts
+function heart(){
+  const h = document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}
+setInterval(heart,300);
+
+// YES button
+function love(){
+  document.getElementById("poetry").innerHTML =
+  "Mahnoor, tum meri dua ho 🤍<br><br> \
+   Jab tum hasta ho, meri duniya roshan ho jaati hai ✨<br> \
+   I promise tumhe hamesha tang karunga... par sirf pyaar se 😌💖";
+  fireworks();
 }
 
-// Floating hearts generator
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 15 + "px";
-    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
+// Funny button
+function funny(){
+  alert("Tum itni cute ho ke Google bhi tumhe search nahi kar sakta, kyunki tum one of a kind ho 😌❤️");
 }
 
-setInterval(createHeart, 300);
+// Secret button
+function secret(){
+  document.getElementById("poetry").innerHTML =
+  "Secret unlocked 🔐💘<br><br> \
+   Sach bataun? <br> \
+   Main lucky hoon ke tum meri ho. <br> \
+   Tum sirf meri girlfriend nahi... meri best friend bhi ho ❤️";
+}
+
+// Fireworks effect
+function fireworks(){
+  for(let i=0;i<15;i++){
+    const f=document.createElement("div");
+    f.className="firework";
+    f.innerHTML="💖";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*100+"vh";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1000);
+  }
+}
 
 </script>
 
 </body>
 </html>
+
