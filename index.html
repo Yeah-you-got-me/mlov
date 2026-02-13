@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mahnoor ❤️</title>
+<title>Happy Valentine's Day Mahnoor ❤️</title>
 
 <style>
 body {
     margin: 0;
     overflow: hidden;
     font-family: 'Georgia', serif;
-    background: radial-gradient(circle at top, #1e1e2f, #0f0f1a);
+    background: linear-gradient(180deg, #1a1a2e, #16213e);
     color: white;
     text-align: center;
     height: 100vh;
@@ -25,20 +25,26 @@ body {
 
 h1 {
     font-size: 2.8rem;
-    letter-spacing: 2px;
-    animation: fadeIn 3s ease;
+    color: #ff4d6d;
+    animation: fadeIn 2s ease;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: -10px;
+    color: #ffd6e0;
 }
 
 p {
-    max-width: 500px;
+    max-width: 550px;
     margin: 20px auto;
     font-size: 1.2rem;
-    line-height: 1.6;
-    animation: fadeIn 4s ease;
+    line-height: 1.7;
+    animation: fadeIn 3s ease;
 }
 
 button {
-    margin-top: 20px;
+    margin: 10px;
     padding: 12px 28px;
     border: none;
     border-radius: 30px;
@@ -74,7 +80,7 @@ button:hover {
 
 .firework {
     position: absolute;
-    font-size: 30px;
+    font-size: 28px;
     animation: boom 1s ease forwards;
 }
 
@@ -88,34 +94,34 @@ button:hover {
 <body>
 
 <div class="container">
-<h1>Mahnoor ❤️</h1>
+<h1>Happy Valentine's Day ❤️</h1>
+<h2>For Mahnoor</h2>
 
 <p id="text">
-"Khudi ko kar buland itna..." <br>
-— Allama Iqbal <br><br>
+Mahnoor,  
+tum meri raat ka chaand ho 🌙  
+meri dua ka sabse pyaara hissa.  
 
-But today, my only elevation is loving you more.  
-Tum meri raat ka chaand ho,  
-meri dua ka sabse khoobsurat hissa. 🌙  
-
-Faiz ne kaha tha,  
+Faiz ne likha tha,  
 "Gulon mein rang bhare..."  
 Magar meri duniya mein rang tab aaya  
 jab tum meri zindagi mein aayi. 💖  
 
-Mahnoor,  
-tum sirf ek naam nahi…  
+Aur haan…  
+tum mera chota don ho 😌  
+tum mera mota dhusa ho 🤍  
+par sabse zyada…  
 tum meri sukoon ho.
 </p>
 
-<button onclick="reveal()">Forever Yours ❤️</button>
+<button onclick="next()">Read More ❤️</button>
 
 </div>
 
 <script>
 
 // Star background
-for(let i=0;i<100;i++){
+for(let i=0;i<120;i++){
     const star=document.createElement("div");
     star.className="star";
     star.style.left=Math.random()*100+"vw";
@@ -124,20 +130,18 @@ for(let i=0;i<100;i++){
     document.body.appendChild(star);
 }
 
-// Reveal message
-function reveal(){
-    document.getElementById("text").innerHTML=
-    "Happy Valentine's Day, Mahnoor ❤️<br><br>\
-    Tum meri zindagi ka sabse khoobsurat hissa ho.<br>\
-    Jab tum muskuraati ho, duniya thodi aur roshan lagti hai.<br><br>\
-    Main wada karta hoon — hamesha tumhara rahunga.<br>\
-    Not just today, but forever. 💍✨";
+function next(){
+    document.getElementById("text").innerHTML =
+    "Mahnoor ❤️<br><br>\
+    Jab tum hasta ho, meri duniya thodi aur roshan ho jaati hai. ✨<br><br>\
+    Tum meri kahani ka sabse khoobsurat chapter ho.<br>\
+    Aur main chahta hoon ke yeh kahani kabhi khatam na ho. 💍<br><br>\
+    Happy Valentine's Day, meri jaan. ❤️";
     fireworks();
 }
 
-// Fireworks
 function fireworks(){
-    for(let i=0;i<20;i++){
+    for(let i=0;i<25;i++){
         const f=document.createElement("div");
         f.className="firework";
         f.innerHTML="💖";
@@ -152,3 +156,4 @@ function fireworks(){
 
 </body>
 </html>
+
